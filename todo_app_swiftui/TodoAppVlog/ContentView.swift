@@ -16,6 +16,7 @@ struct ContentView: View {
     
     var body: some View {
         let allItems = { self.itemsManager.retrieveAllItems() }()
+        
         return NavigationView {
             VStack {
                 TextField("Insert todo. Eg.: Buy Apples", text: $todoText, onCommit: {
@@ -27,9 +28,9 @@ struct ContentView: View {
                     .multilineTextAlignment(.center)
                 
                 List {
-                    ForEach(allItems) {
+                    ForEach(allItems, id: \.self) {
                         item in
-                        return Text(item.rawValue)
+                        Text(item)
                     }
                     .onDelete(perform: deleteItem)
                     .alert(isPresented: $showDeleteAlert, content: {

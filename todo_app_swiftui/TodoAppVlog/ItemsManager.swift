@@ -22,5 +22,5 @@ class ItemsManager<Element>: ObservableObject {
         items.deleteItem(index: index)
     }
     
-    func retrieveAllItems() -> [Items<Element>.Item<Element>] { items.getAllItems() }
+    func retrieveAllItems() -> [Element] { items.getAllItems() }
 }

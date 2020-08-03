@@ -10,22 +10,17 @@ import Foundation
 
 // Model
 struct Items<Element> {
-    private var allItems = [Item<Element>]()
+    private var allItems = [Element]()
     
-    func getAllItems() -> [Item<Element>] { allItems }
+    func getAllItems() -> [Element] { allItems }
     
     mutating func appendToItems(withContent content: Element) {
-        allItems.append(Item(rawValue: content))
+        allItems.append(content)
     }
     
     mutating func deleteItem(index: IndexSet) {
         if let first = index.first {
             allItems.remove(at: first)
         }
-    }
-    
-    struct Item<Element>: Identifiable {
-        let id = UUID()
-        let rawValue: Element
     }
 }
